@@ -1,0 +1,29 @@
+// Design: while loop example
+module while_design(output reg [2:0] i);
+
+  initial begin
+    i = 0;
+    while (i < 4) begin
+      #5 i = i + 1;
+    end
+  end
+
+endmodule
+
+
+      ////testbench
+      module tb_while;
+
+  wire [2:0] i;
+
+  // Instantiate the design
+  while_design DUT (
+    .i(i)
+  );
+
+  initial begin
+    $monitor("Time = %0t | i = %d", $time, i);
+    #30 $finish;
+  end
+
+endmodule
